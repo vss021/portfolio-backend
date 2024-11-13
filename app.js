@@ -6,7 +6,7 @@ import cors from "cors";
 import { dbConnection } from "./database/connection.js";
 import { errorMiddleware } from "./middlewares/error.js";
 import userRouter from "./routes/userRouter.js";
-import timelineRouter from "./routes/timelineRouter.js";
+import timelineRouter from "./routes/timeLineRouter.js";
 import messageRouter from "./routes/messageRouter.js";
 import skillRouter from "./routes/skillRouter.js";
 import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
