@@ -3,12 +3,12 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import cors from "cors";
-import {dbConnection} from "./database/connection.js";
+import { dbConnection } from "./database/connection.js";
 import { errorMiddleware } from "./middlewares/error.js";
 import userRouter from "./routes/userRouter.js";
-import timelineRouter from "./routes/timeLineRouter.js";
+import timelineRouter from "./routes/timelineRouter.js";
 import messageRouter from "./routes/messageRouter.js";
-import skillRouter from "./routes/skillsRouter.js";
+import skillRouter from "./routes/skillRouter.js";
 import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
 
