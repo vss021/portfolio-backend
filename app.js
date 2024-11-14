@@ -13,6 +13,7 @@ import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
 import projectRouter from "./routes/projectRouter.js";
 
 const app = express();
+
 dotenv.config({ path: "./config/config.env" });
 
 app.use(
@@ -22,6 +23,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 app.use(cookieParser());
 app.use(express.json());
@@ -42,6 +44,7 @@ app.use("/api/v1/softwareapplication", softwareApplicationRouter);
 app.use("/api/v1/project", projectRouter);
 
 dbConnection();
+
 app.use(errorMiddleware);
 
 export default app;
