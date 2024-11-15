@@ -17,6 +17,7 @@ const timelineSchema = new mongoose.Schema({
       type: String,
     },
   },
-});
+  
+}, { timestamps: true });
 
 export const Timeline = mongoose.model("Timeline", timelineSchema);

@@ -115,7 +115,7 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUser = catchAsyncErrors(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
+  const user = await User.findById("673311f41a5b38d85eb3a3d7");
   res.status(200).json({
     success: true,
     user,

@@ -73,8 +73,9 @@ export const updateSkill = catchAsyncErrors(async (req, res, next) => {
     skill,
   });
 });
+
 export const getAllSkills = catchAsyncErrors(async (req, res, next) => {
-  const skills = await Skill.find();
+  const skills = await Skill.find().sort({ created: -1 }); // -1 for descending order, 1 for ascending;
   res.status(200).json({
     success: true,
     skills,

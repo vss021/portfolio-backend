@@ -16,22 +16,13 @@ const app = express();
 
 dotenv.config({ path: "./config/config.env" });
 
-const allowedOrigins = ["https://vijay021.netlify.app", "https://vssdashboard.netlify.app"];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
-
 
 
 app.use(cookieParser());
@@ -44,6 +35,7 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
+
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/timeline", timelineRouter);

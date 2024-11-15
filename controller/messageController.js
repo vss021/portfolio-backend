@@ -21,6 +21,7 @@ export const deleteMessage = catchAsyncErrors(async (req, res, next) => {
   if (!message) {
     return next(new ErrorHandler("Message Already Deleted!", 400));
   }
+  
   await message.deleteOne();
   res.status(201).json({
     success: true,
@@ -29,7 +30,7 @@ export const deleteMessage = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getAllMessages = catchAsyncErrors(async (req, res, next) => {
-  const messages = await Message.find();
+  const messages = await Message.find().sort({ created: -1 }); // -1 for descending order, 1 for ascending;
   res.status(201).json({
     success: true,
     messages,

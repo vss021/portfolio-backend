@@ -14,7 +14,7 @@ const softwareApplicationSchema = new mongoose.Schema({
       required: true,
     },
   },
-});
+}, { timestamps: true });
 
 export const SoftwareApplication = mongoose.model(
   "SoftwareApplication",
