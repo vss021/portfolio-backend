@@ -56,7 +56,7 @@ export const deleteApplication = catchAsyncErrors(async (req, res, next) => {
 
 export const getAllApplications = catchAsyncErrors(async (req, res, next) => {
   
-  const softwareApplications = await SoftwareApplication.find().sort({ created: -1 }); // -1 for descending order, 1 for ascending;
+  const softwareApplications = await SoftwareApplication.find().sort({ createdAt: -1 }); // -1 for descending order, 1 for ascending;
   res.status(200).json({
     success: true,
     softwareApplications,

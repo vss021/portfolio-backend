@@ -30,7 +30,7 @@ export const deleteMessage = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getAllMessages = catchAsyncErrors(async (req, res, next) => {
-  const messages = await Message.find().sort({ created: -1 }); // -1 for descending order, 1 for ascending;
+  const messages = await Message.find().sort({ createdAt: -1 }); // -1 for descending order, 1 for ascending;
   res.status(201).json({
     success: true,
     messages,

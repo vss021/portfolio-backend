@@ -117,7 +117,7 @@ export const deleteProject = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getAllProjects = catchAsyncErrors(async (req, res, next) => {
-  const projects = await Project.find().sort({ created: -1 }); // -1 for descending order, 1 for ascending;
+  const projects = await Project.find().sort({ createdAt: -1 }); // -1 for descending order, 1 for ascending;
   res.status(200).json({
     success: true,
     projects,

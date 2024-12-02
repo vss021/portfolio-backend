@@ -97,6 +97,7 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid Email Or Password", 401));
   }
+
   
   generateToken(user, "Login Successfully!", 200, res);
 });
@@ -146,6 +147,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
         folder: "PORTFOLIO AVATAR",
       }
     );
+
     newUserData.avatar = {
       public_id: newProfileImage.public_id,
       url: newProfileImage.secure_url,
@@ -173,6 +175,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     runValidators: true,
     useFindAndModify: false,
   });
+
   res.status(200).json({
     success: true,
     message: "Profile Updated!",
@@ -183,13 +186,16 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
 export const updatePassword = catchAsyncErrors(async (req, res, next) => {
   const { currentPassword, newPassword, confirmNewPassword } = req.body;
   const user = await User.findById(req.user.id).select("+password");
+
   if (!currentPassword || !newPassword || !confirmNewPassword) {
     return next(new ErrorHandler("Please Fill All Fields.", 400));
   }
+
   const isPasswordMatched = await user.comparePassword(currentPassword);
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Incorrect Current Password!"));
   }
+
   if (newPassword !== confirmNewPassword) {
     return next(
       new ErrorHandler("New Password And Confirm New Password Do Not Match!")
