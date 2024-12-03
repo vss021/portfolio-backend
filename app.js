@@ -14,7 +14,11 @@ import projectRouter from "./routes/projectRouter.js";
 
 const app = express();
 
-dotenv.config({ path: "./config/config.env" });
+
+// Load all environment variables from the .env file
+dotenv.config();
+
+
 
 app.use(
   cors({
