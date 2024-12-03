@@ -22,11 +22,18 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: ["https://vijay021.netlify.app", "https://vssdashboard.netlify.app"],  // specify the allowed origins
-    methods: ["GET", "POST", "PUT", "DELETE"],  // specify the allowed methods
-    credentials: true,  // allow credentials (cookies)
+    origin: ["https://vijay021.netlify.app", "https://vssdashboard.netlify.app"],  // Allowed origins
+    methods: ["GET", "POST", "PUT", "DELETE"],  // Allowed methods
+    credentials: true,  // Allow credentials (cookies)
   })
 );
+
+// Ensure headers for credentials are properly set
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", "true");  // Set the credentials header to true
+  next();
+});
+
 
 
 
