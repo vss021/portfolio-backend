@@ -20,7 +20,14 @@ dotenv.config();
 
 
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://vijay021.netlify.app", "https://vssdashboard.netlify.app"],  // specify the allowed origins
+    methods: ["GET", "POST", "PUT", "DELETE"],  // specify the allowed methods
+    credentials: true,  // allow credentials (cookies)
+  })
+);
+
 
 
 app.use(cookieParser());
